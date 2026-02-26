@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+:root {
+    --bg-dark: #1a0033;
+    --neon-cyan: #01cdfe;
+    --neon-green: #05ffa1;
+    --neon-pink: #ff71ce;
+    --neon-purple: #b967ff;
+    --neon-yellow: #fffb96;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1a0033;
+    background-image:
+        linear-gradient(45deg, #2a0044 25%, transparent 25%),
+        linear-gradient(-45deg, #2a0044 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #2a0044 75%),
+        linear-gradient(-45deg, transparent 75%, #2a0044 75%);
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-size: 20px 20px;
+}
+
+.container {
+    background: #0a0014;
+    border: 2px solid var(--neon-cyan);
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+}
+
+h1 {
+    color: var(--neon-pink);
+    font-size: 2rem;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.game-info {
+    align-items: center;
+    background: #2a0044;
+    border: 1px solid var(--neon-pink);
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 15px 25px;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.stat-label {
+    color: var(--neon-cyan);
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.stat-value {
+    color: var(--neon-yellow);
+    font-size: 1.2rem;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.button {
+    background: transparent;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.button:hover:not(:disabled) {
+    background: var(--neon-pink);
+    color: #000;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.mode {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.mode-button {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    cursor: pointer;
+    font-size: 0.7rem;
+    padding: 8px 12px;
+    white-space: nowrap;
+}
+
+.mode-button.active {
+    background: var(--neon-cyan);
+    color: #000;
+}
+
+.movie-frame {
+    background: #000;
+    border: 1px solid var(--neon-purple);
+    height: 500px;
+    margin-bottom: 25px;
+    max-height: 70vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.movie-frame img {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+
+.loading {
+    color: var(--neon-cyan);
+    font-weight: bold;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.blur-overlay {
+    background: #000000;
+    display: none;
+    height: 100%;
+    left: 0;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.hint-content {
+    background: #111;
+    border: 1px solid var(--neon-yellow);
+    display: none;
+    left: 50%;
+    max-height: 80%;
+    overflow-y: auto;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    z-index: 10;
+}
+
+.hint-text {
+    color: #ccc;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.hint-title {
+    color: var(--neon-yellow);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#movie-input {
+    background: #000;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    flex: 1;
+    font-size: 1rem;
+    padding: 15px;
+    width: 100%;
+}
+
+#movie-input:focus {
+    border: 1px solid var(--neon-yellow);
+    border-radius: 0;
+    outline: none;
+}
+
+#submit-button {
+    background: var(--neon-cyan);
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 15px 25px;
+}
+
+.result {
+    display: none;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.correct {
+    background: #002200;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+}
+
+.wrong {
+    background: #220000;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+}
+
+.movie-title-reveal {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.movie-details {
+    color: #aaa;
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.movie-details strong {
+    color: var(--neon-cyan);
+}
+
+#next-button {
+    background: var(--neon-yellow);
+    border: none;
+    color: #000;
+    cursor: pointer;
+    display: none;
+    font-weight: bold;
+    padding: 15px 40px;
+    width: 100%;
+}
+
+.notification {
+    background: var(--neon-purple);
+    bottom: 20px;
+    display: none;
+    font-size: 0.8rem;
+    left: 50%;
+    padding: 12px 20px;
+    position: fixed;
+    text-align: center;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 1001;
+}
+
+.notification.show {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .game-info {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .mode {
+        gap: 5px;
+    }
+
+    .mode-button {
+        font-size: 0.65rem;
+        padding: 6px 8px;
+    }
+
+    .stats {
+        gap: 15px;
+    }
+
+    .movie-frame {
+        height: 250px;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    #submit-button {
+        width: 100%;
+    }
+}

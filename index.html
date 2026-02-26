@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filmequiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="filmequiz-icon.png" type="image/png">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>filmequiz</h1>
+        </header>
+        <div class="game-info">
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="score">0</div>
+                    <div class="stat-label">pontuação</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="high-score">0</div>
+                    <div class="stat-label">recorde</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="streak">0</div>
+                    <div class="stat-label">combo</div>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="button hint-button" id="hint-button" disabled>dica</button>
+                <button class="button skip-button" id="skip-button" disabled>pular</button>
+                <button class="button new-game-button" id="new-game-button">reiniciar</button>
+            </div>
+        </div>
+        <div class="mode">
+            <span>modo</span>
+            <button class="mode-button active" data-level="popular">popular</button>
+            <button class="mode-button" data-level="top_rated">mais bem avaliados</button>
+            <button class="mode-button" data-level="now_playing">em cartaz</button>
+            <button class="mode-button" data-level="upcoming">em breve</button>
+        </div>
+        <div class="movie-frame">
+            <div class="loading" id="loading">carregando</div>
+            <div class="blur-overlay" id="blur-overlay"></div>
+            <div class="hint-content" id="hint-content">
+                <div class="hint-title">dica</div>
+                <div class="hint-text" id="hint-text"></div>
+                <button class="button close-hint-button" id="close-hint-button"
+                    style="margin-top: 20px;">fechar</button>
+            </div>
+            <img id="movie-image" src="" alt="Frame">
+        </div>
+        <div class="input-area" id="input-area">
+            <input type="text" id="movie-input" placeholder="nome" autocomplete="off">
+            <button id="submit-button">palpitar</button>
+        </div>
+        <div class="result" id="result"></div>
+        <button class="next-button" id="next-button">próximo</button>
+    </div>
+    <div class="notification" id="notification"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
